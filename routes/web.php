@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\TranslationController;
+use App\Http\Controllers\BioController;
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\frontend\TutorsPageController;
 
 Route::post('/change-language', [LanguageController::class, 'changeLanguage'])->name('change-language');
@@ -24,6 +26,8 @@ Route::middleware('auth')->prefix('manage')->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('tutors', TutorController::class);
+    Route::resource('bios', BioController::class);
+    Route::resource('links', LinkController::class);
     Route::resource('languages', LanguageController::class);
     Route::get('languages/{id}/translations', [TranslationController::class, 'index'])->name('languages.translations');
     Route::put('translations/update-multiple', [TranslationController::class, 'updateMultiple'])->name('translations.update_multiple');

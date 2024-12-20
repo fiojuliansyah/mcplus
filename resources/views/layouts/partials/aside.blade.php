@@ -21,12 +21,20 @@
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <i class="ri-user-2-line text-xl me-14 d-flex w-auto"></i>
-                    <span>Tutors</span>
+                    <span>Manage</span>
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
                         <a href="{{ route('tutors.index') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Tutor List</a>
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Manage Tutors</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('bios.index') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Manage Bio</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('links.index') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Manage Link</a>
                     </li>
                     <li>
                         <a href="{{ route('categories.index') }}"><i

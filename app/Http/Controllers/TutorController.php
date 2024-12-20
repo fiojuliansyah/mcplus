@@ -29,7 +29,8 @@ class TutorController extends Controller
             'category_id' => 'required|string',
             'name' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
-            'video' => 'nullable|mimes:mp4,mov,avi,wmv',
+            // 'image' => 'nullable|mimes:mp4,mov,avi,wmv',
+            'video' => 'nullable|mimes:mp4,mov,avi,wmv,mkv',
         ]);
 
         $slug = Str::slug($request->name);
@@ -91,7 +92,7 @@ class TutorController extends Controller
 
         if ($request->hasFile('image')) {
             if ($tutor->image_public_id) {
-                \Cloudinary\Cloudinary::image($tutor->image_public_id)->destroy();
+                Cloudinary::destroy($tutor->image_public_id);
             }
 
             $cloudinaryImage = $request->file('image')->storeOnCloudinary('tutors/images');
@@ -101,7 +102,7 @@ class TutorController extends Controller
 
         if ($request->hasFile('video')) {
             if ($tutor->video_public_id) {
-                \Cloudinary\Cloudinary::video($tutor->video_public_id)->destroy();
+                Cloudinary::destroy($tutor->video_public_id);
             }
 
             $cloudinaryVideo = $request->file('video')->storeOnCloudinary('tutors/videos');
@@ -123,11 +124,11 @@ class TutorController extends Controller
         $tutor = Tutor::where('slug', $slug)->firstOrFail();
 
         if ($tutor->image_public_id) {
-            \Cloudinary\Cloudinary::image($tutor->image_public_id)->destroy();
+            Cloudinary::destroy($tutor->image_public_id);
         }
 
         if ($tutor->video_public_id) {
-            \Cloudinary\Cloudinary::video($tutor->video_public_id)->destroy();
+            Cloudinary::destroy($tutor->video_public_id);
         }
 
         $tutor->delete();
