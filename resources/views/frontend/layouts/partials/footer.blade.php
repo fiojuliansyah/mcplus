@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-lg-4 col-sm-4">
               <div class="cs-footer_widget">
-                <h2 class="cs-widget_title">Marketplace</h2>
+                {{-- <h2 class="cs-widget_title">Marketplace</h2>
                 <ul class="cs-widget_nav">
                   <li><a href="explore-1.html">All NFTs</a></li>
                   <li><a href="explore-2.html">Popular Art</a></li>
@@ -15,12 +15,12 @@
                   <li><a href="explore-1.html">Trending</a></li>
                   <li><a href="explore-details.html">Explore Details</a></li>
                   <li><a href="live-action.html">Live Action</a></li>
-                </ul>
+                </ul> --}}
               </div>
             </div><!-- .col -->
             <div class="col-lg-4 col-sm-4">
               <div class="cs-footer_widget">
-                <h2 class="cs-widget_title">Account</h2>
+                {{-- <h2 class="cs-widget_title">Account</h2>
                 <ul class="cs-widget_nav">
                   <li><a href="user-profile.html">Profile</a></li>
                   <li><a href="user-items.html">My Collection</a></li>
@@ -28,19 +28,19 @@
                   <li><a href="user-account-settings.html">Account Setting</a></li>
                   <li><a href="connect-wallet.html">Connect wallet</a></li>
                   <li><a href="explore-1.html">Wishlist</a></li>
-                </ul>
+                </ul> --}}
               </div>
             </div><!-- .col -->
             <div class="col-lg-4 col-sm-4">
               <div class="cs-footer_widget">
-                <h2 class="cs-widget_title">Company</h2>
+                {{-- <h2 class="cs-widget_title">Company</h2>
                 <ul class="cs-widget_nav">
                   <li><a href="blog.html">Recent News</a></li>
                   <li><a href="how-it-works.html">How it Works</a></li>
                   <li><a href="about.html">About Us</a></li>
                   <li><a href="contact.html">Contact Us</a></li>
                   <li><a href="faq.html">Help Center & FAQ</a></li>
-                </ul>
+                </ul> --}}
               </div>
             </div><!-- .col -->
           </div>
