@@ -33,8 +33,12 @@
                                 class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Manage Bio</a>
                     </li>
                     <li>
-                        <a href="{{ route('links.index') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Manage Link</a>
+                        <a href="{{ route('programs.index') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Manage Program</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('plusian-kits.index') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Manage Plusian Kit</a>
                     </li>
                     <li>
                         <a href="{{ route('categories.index') }}"><i

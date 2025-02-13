@@ -51,7 +51,7 @@
                 height: 264,
                 type: 'donut',
             },
-            colors: ['#16a34a', '#c40248', '#2563eb', '#dc2626', '#f86624', '#ffc107'],
+            colors: ['#16a34a', '#c40248', '#b70092', '#dc2626', '#f86624', '#ffc107'],
             dataLabels: {
                 enabled: false
             },

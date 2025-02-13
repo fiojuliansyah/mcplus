@@ -1,73 +1,100 @@
-<header class="header">
-    <div class="container container--xl">
-        <nav class="header-inner flex-between gap-8">
-
-            <div class="header-content-wrapper flex-align flex-grow-1">
-                <!-- Logo Start -->
-                <div class="logo">
-                    <a href="index.html" class="link">
-                        <img src="/frontend/assets/images/logo/logo.png" alt="Logo">
-                    </a>
+<header class="cs-site_header cs-style1 cs-sticky-header cs-white_bg">
+  <div class="cs-main_header">
+    <div class="container-fluid">
+      <div class="cs-main_header_in">
+        <div class="cs-main_header_left">
+          <a class="cs-site_branding" href="/"><img src="/assets/images/logo-white.png" alt="Logo"></a>
+        </div>
+        <div class="cs-main_header_right">
+          <div class="cs-nav_wrap">
+            <div class="cs-nav_out">
+              <div class="cs-nav_in">
+                <div class="cs-nav">
+                  <ul class="cs-nav_list">
+                    <li>
+                      <a href="{{ route('frontend.schedules') }}">Schedule</a>
+                    </li>
+                    <li>
+                      <a href="{{ route('frontend.programs.index') }}">Program & Seminars</a>
+                    </li>
+                    <li>
+                      <a href="{{ route('frontend.tutors.index') }}">Tutors</a>
+                    </li>
+                    <li>
+                      <a href="{{ route('frontend.plusian-kits') }}">Plusian Kit</a>
+                    </li>
+                    <li>
+                      <a href="https://merchandise.mcplus.my/" target="_blank">Merchandise</a>
+                    </li>
+                    <li>
+                      <a href="{{ route('frontend.tutors.index') }}">Careers</a>
+                    </li>
+                  </ul>
                 </div>
-                <!-- Logo End  -->
-
-                <!-- Select Start -->
-                <div class="d-sm-block d-none">
-                    <div class="header-select border border-neutral-30 bg-main-25 rounded-pill position-relative">
-                        <span
-                            class="select-icon position-absolute top-50 translate-middle-y inset-inline-start-0 z-1 ms-lg-4 ms-12 text-xl pointer-event-none d-flex">
-                            <i class="ph-bold ph-squares-four"></i>
-                        </span>
-                        <select class="js-example-basic-single border-0" name="state">
-                            <option value="1" selected disabled>Categories</option>
-                            <option value="1">Design</option>
-                            <option value="1">Development</option>
-                            <option value="1">Architecture</option>
-                            <option value="1">Life Style</option>
-                            <option value="1">Data Science</option>
-                            <option value="1">Marketing</option>
-                            <option value="1">Music</option>
-                            <option value="1">Typography</option>
-                            <option value="1">Finance</option>
-                            <option value="1">Motivation</option>
-                        </select>
-                    </div>
-                </div>
-                <!-- Select End -->
-
-                <!-- Menu Start  -->
-                <div class="header-menu d-lg-block d-none">
-
-                    <ul class="nav-menu flex-align">
-                        <li class="nav-menu__item">
-                            <a href="{{ route('frontend.tutors.index') }}" class="nav-menu__link {{ request()->routeIs(['frontend.tutors.index','frontend.tutors.detail']) ? 'activePage' : '' }}">
-                                {{ Translation::getTranslation('Tutors') }}
-                            </a>
-                        </li>
-                    </ul>                    
-                </div>
-                <!-- Menu End  -->
+              </div>
             </div>
-
-            <!-- Header Right start -->
-            <div class="header-right flex-align">
-                <form action="#" class="search-form position-relative d-xl-block d-none">
-                    <input type="text" class="common-input rounded-pill bg-main-25 pe-48 border-neutral-30"
-                        placeholder="Search...">
-                    <button type="submit"
-                        class="w-36 h-36 bg-main-600 hover-bg-main-700 rounded-circle flex-center text-md text-white position-absolute top-50 translate-middle-y inset-inline-end-0 me-8">
-                        <i class="ph-bold ph-magnifying-glass"></i>
-                    </button>
-                </form>
-                <a href="sign-in.html"
-                    class="info-action w-52 h-52 bg-main-25 hover-bg-main-600 border border-neutral-30 rounded-circle flex-center text-2xl text-neutral-500 hover-text-white hover-border-main-600">
-                    <i class="ph ph-user-circle"></i>
-                </a>
-                <button type="button" class="toggle-mobileMenu d-lg-none text-neutral-200 flex-center">
-                    <i class="ph ph-list"></i>
-                </button>
-            </div>
-            <!-- Header Right End  -->
-        </nav>
+          </div>
+          <div class="cs-header_btns_wrap">
+            <a href="{{ route('frontend.time-table') }}" class="cs-btn cs-style2"><span><strong style="color: gold"><i class="far fa-calendar" style="color: gold"></i>TIME TABLE</strong></span></a>
+            <a href="connect-wallet.html" class="cs-btn cs-style1"><span><strong>7 DAYS TRIAL</strong></span>
+            
+              <!-- Border animation -->
+              <span style="
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                border-radius: 1.6em;
+                box-sizing: border-box;
+                border: 2px solid transparent;
+                animation: glowingBorder 3s infinite linear;
+              "></span>
+            </a>
+            
+            <style>
+              /* Animasi glow yang memutari border */
+              @keyframes glowingBorder {
+                0% {
+                  border-color: rgba(255, 255, 255, 0);
+                  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+                }
+                25% {
+                  border-color: rgba(255, 255, 255, 0.6);
+                  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+                }
+                50% {
+                  border-color: rgba(255, 255, 255, 0.9);
+                  box-shadow: 0 0 25px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8);
+                }
+                75% {
+                  border-color: rgba(255, 255, 255, 0.6);
+                  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+                }
+                100% {
+                  border-color: rgba(255, 255, 255, 0);
+                  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+                }
+              }
+            
+              /* Style button */
+              .cs-btn.cs-style1 {
+                display: inline-block;
+                line-height: 1.5em;
+                color: #fff;
+                font-weight: 500;
+                background-color: #B70092;
+                border-radius: 1.6em;
+                padding: 8px 25px;
+                position: relative;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                -webkit-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+              }
+            </style>
+            
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </header>

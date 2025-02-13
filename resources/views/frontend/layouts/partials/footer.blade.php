@@ -1,170 +1,84 @@
-<footer class="footer bg-main-25 position-relative z-1">
-    <img src="/frontend/assets/images/shapes/shape2.png" alt="" class="shape five animation-scalation">
-    <img src="/frontend/assets/images/shapes/shape6.png" alt="" class="shape one animation-scalation">
-
-    <div class="py-120 ">
-        <div class="container container-two">
-            <div class="row row-cols-xxl-5 row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-5">
-                <div class="col" data-aos="fade-up" data-aos-duration="300">
-                    <div class="footer-item">
-                        <div class="footer-item__logo">
-                            <a href="index.html"> <img src="/frontend/assets/images/logo/logo.png"
-                                    alt=""></a>
-                        </div>
-                        <p class="my-32">EduAll exceeded all my expectations! The instructors were not only
-                            experts</p>
-                        <ul class="social-list flex-align gap-24">
-                            <li class="social-list__item">
-                                <a href="https://www.facebook.com"
-                                    class="text-main-600 text-2xl hover-text-main-two-600"><i
-                                        class="ph-bold ph-facebook-logo"></i></a>
-                            </li>
-                            <li class="social-list__item">
-                                <a href="https://www.twitter.com"
-                                    class="text-main-600 text-2xl hover-text-main-two-600"> <i
-                                        class="ph-bold ph-twitter-logo"></i></a>
-                            </li>
-                            <li class="social-list__item">
-                                <a href="https://www.linkedin.com"
-                                    class="text-main-600 text-2xl hover-text-main-two-600"><i
-                                        class="ph-bold ph-instagram-logo"></i></a>
-                            </li>
-                            <li class="social-list__item">
-                                <a href="https://www.pinterest.com"
-                                    class="text-main-600 text-2xl hover-text-main-two-600"><i
-                                        class="ph-bold ph-pinterest-logo"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="400">
-                    <div class="footer-item">
-                        <h4 class="footer-item__title mb-32">Navigation</h4>
-                        <ul class="footer-menu">
-                            <li class="mb-16">
-                                <a href="about.html"
-                                    class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">About
-                                    us</a>
-                            </li>
-                            <li class="mb-16">
-                                <a href="courses.html"
-                                    class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">Courses</a>
-                            </li>
-                            <li class="mb-16">
-                                <a href="instructor.html"
-                                    class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">Instructor</a>
-                            </li>
-                            <li class="mb-16">
-                                <a href="faq.html"
-                                    class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">FAQs</a>
-                            </li>
-                            <li class="mb-0">
-                                <a href="blog.html"
-                                    class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">Blogs</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="600">
-                    <div class="footer-item">
-                        <h4 class="footer-item__title mb-32">Category</h4>
-                        <ul class="footer-menu">
-                            <li class="mb-16">
-                                <a href="courses.html"
-                                    class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">UI/UX
-                                    Design</a>
-                            </li>
-                            <li class="mb-16">
-                                <a href="courses.html"
-                                    class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">Web
-                                    Development</a>
-                            </li>
-                            <li class="mb-16">
-                                <a href="courses.html"
-                                    class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">Python
-                                    Development</a>
-                            </li>
-                            <li class="mb-16">
-                                <a href="courses.html"
-                                    class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">Digital
-                                    Marketing</a>
-                            </li>
-                            <li class="mb-16">
-                                <a href="courses.html"
-                                    class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">Graphic
-                                    Design</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="800">
-                    <div class="footer-item">
-                        <h4 class="footer-item__title mb-32">Contact Us</h4>
-                        <div class="flex-align gap-20 mb-24">
-                            <span class="icon d-flex text-32 text-main-600"><i class="ph ph-phone"></i></span>
-                            <div class="">
-                                <a href="tel:(207)555-0119"
-                                    class="text-neutral-500 d-block hover-text-main-600 mb-4">(207) 555-0119</a>
-                                <a href="tel:(704)555-0127"
-                                    class="text-neutral-500 d-block hover-text-main-600 mb-0">(704) 555-0127</a>
-                            </div>
-                        </div>
-                        <div class="flex-align gap-20 mb-24">
-                            <span class="icon d-flex text-32 text-main-600"><i
-                                    class="ph ph-envelope-open"></i></span>
-                            <div class="">
-                                <a href="mailto:dwallo@gmail.com"
-                                    class="text-neutral-500 d-block hover-text-main-600 mb-4">dwallo@gmail.com</a>
-                                <a href="mailto:eduAll@gmail.com"
-                                    class="text-neutral-500 d-block hover-text-main-600 mb-0">eduAll@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="flex-align gap-20 mb-24">
-                            <span class="icon d-flex text-32 text-main-600"><i
-                                    class="ph ph-map-trifold"></i></span>
-                            <div class="">
-                                <span class="text-neutral-500 d-block mb-4">5488 srker Rd .</span>
-                                <span class="text-neutral-500 d-block mb-0">8745 doer Dr.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="footer-item">
-                        <h4 class="footer-item__title mb-32">Subscribe Here</h4>
-                        <p class="text-neutral-500">Enter your email address to register to our newsletter
-                            subscription</p>
-                        <form action="#" class="mt-24 position-relative">
-                            <input type="email"
-                                class="form-control bg-white shadow-none border border-neutral-30 rounded-pill h-52 ps-24 pe-48 focus-border-main-600"
-                                placeholder="Email...">
-                            <button type="submit"
-                                class="w-36 h-36 flex-center rounded-circle bg-main-600 text-white hover-bg-main-800 position-absolute top-50 translate-middle-y inset-inline-end-0 me-8">
-                                <i class="ph ph-paper-plane-tilt"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<footer class="cs-footer cs-style1">
+    <div class="cs-footer_bg"></div>
+    <div class="cs-height_100 cs-height_lg_60"></div>
     <div class="container">
-        <!-- bottom Footer -->
-        <div class="bottom-footer bg-main-25 border-top border-dashed border-main-100 border-0 py-32">
-            <div class="container container-two">
-                <div class="bottom-footer__inner flex-between gap-3 flex-wrap">
-                    <p class="bottom-footer__text"> Copyright &copy; 2024 <span
-                            class="fw-semibold">EduAll</span> All Rights Reserved.</p>
-                    <div class="footer-links">
-                        <a href="#"
-                            class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">Privacy
-                            Policy</a>
-                        <a href="#"
-                            class="text-neutral-500 hover-text-main-600 hover-text-decoration-underline">Terms &
-                            Conditions</a>
-                    </div>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-4 col-sm-4">
+              <div class="cs-footer_widget">
+                <h2 class="cs-widget_title">Marketplace</h2>
+                <ul class="cs-widget_nav">
+                  <li><a href="explore-1.html">All NFTs</a></li>
+                  <li><a href="explore-2.html">Popular Art</a></li>
+                  <li><a href="explore-1.html">Digital Art</a></li>
+                  <li><a href="explore-1.html">Trending</a></li>
+                  <li><a href="explore-details.html">Explore Details</a></li>
+                  <li><a href="live-action.html">Live Action</a></li>
+                </ul>
+              </div>
+            </div><!-- .col -->
+            <div class="col-lg-4 col-sm-4">
+              <div class="cs-footer_widget">
+                <h2 class="cs-widget_title">Account</h2>
+                <ul class="cs-widget_nav">
+                  <li><a href="user-profile.html">Profile</a></li>
+                  <li><a href="user-items.html">My Collection</a></li>
+                  <li><a href="create-items.html">Create & Upload</a></li>
+                  <li><a href="user-account-settings.html">Account Setting</a></li>
+                  <li><a href="connect-wallet.html">Connect wallet</a></li>
+                  <li><a href="explore-1.html">Wishlist</a></li>
+                </ul>
+              </div>
+            </div><!-- .col -->
+            <div class="col-lg-4 col-sm-4">
+              <div class="cs-footer_widget">
+                <h2 class="cs-widget_title">Company</h2>
+                <ul class="cs-widget_nav">
+                  <li><a href="blog.html">Recent News</a></li>
+                  <li><a href="how-it-works.html">How it Works</a></li>
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="contact.html">Contact Us</a></li>
+                  <li><a href="faq.html">Help Center & FAQ</a></li>
+                </ul>
+              </div>
+            </div><!-- .col -->
+          </div>
         </div>
+        <div class="col-lg-4 col-sm-12">
+          <div class="cs-footer_widget">
+            <h2 class="cs-widget_title">Subscribe to our newsletter.</h2>
+            <form class="cs-footer_newsletter">
+              <input type="text" placeholder="Enter Your Email" class="cs-newsletter_input">
+              <button class="cs-newsletter_btn">
+                <svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24.7014 9.03523C25.0919 8.64471 25.0919 8.01154 24.7014 7.62102L18.3374 1.25706C17.9469 0.866533 17.3137 0.866533 16.9232 1.25706C16.5327 1.64758 16.5327 2.28075 16.9232 2.67127L22.5801 8.32812L16.9232 13.985C16.5327 14.3755 16.5327 15.0087 16.9232 15.3992C17.3137 15.7897 17.9469 15.7897 18.3374 15.3992L24.7014 9.03523ZM0.806641 9.32812H23.9943V7.32812H0.806641V9.32812Z" fill="white"/>
+                </svg>                  
+              </button>
+            </form>
+            <div class="cs-footer_social_btns">
+              <a href="#"><i class="fab fa-facebook-f fa-fw"></i></a>
+              <a href="#"><i class="fab fa-twitter fa-fw"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a>
+              <a href="#"><i class="fab fa-instagram fa-fw"></i></a>
+              <a href="#"><i class="fab fa-whatsapp fa-fw"></i></a>
+              <a href="#"><i class="fab fa-github fa-fw"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</footer>
+    <div class="cs-height_60 cs-height_lg_20"></div>
+    <div class="cs-footer_bottom">
+      <div class="container">
+        <div class="cs-footer_separetor"></div>
+        <div class="cs-footer_bottom_in">
+          <div class="cs-copyright">Copyright 2025. Created by MCPLUS.</div>
+          <ul class="cs-footer_menu">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-condition.html">Term & Condition</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>

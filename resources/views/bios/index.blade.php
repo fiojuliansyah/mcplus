@@ -28,11 +28,13 @@
                         <td>
                             {{ $loop->iteration }}
                         </td>
-                        {{-- <td><a href="{{ route('bios.show', $bio->slug) }}" class="text-primary-600 fw-bold">{{ $bio->name }}</a></td> --}}
                         <td class="text-primary-600 fw-bold">{{ $bio->name }}</td>
                         <td><img src="{{ $bio->image_url }}" alt="{{ $bio->name }}" class="img-thumbnail" style="width:75px; height:75px;"></td>
-                        <td>{{ $bio->created_at }}</td>
+                        <td>{{ $bio->created_at->format('d M Y') }}</td>
                         <td>
+                            <a href="{{ route('links.index', $bio->slug) }}" class="w-32-px h-32-px bg-info-focus text-info-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                <iconify-icon icon="lucide:list"></iconify-icon>
+                            </a>
                             <a href="{{ route('bios.edit', $bio->slug) }}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                 <iconify-icon icon="lucide:edit"></iconify-icon>
                             </a>

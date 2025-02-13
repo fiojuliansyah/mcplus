@@ -6,7 +6,7 @@
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
         <h6 class="fw-semibold mb-0">Link List</h6>
         <ul class="d-flex align-items-center gap-2">
-            <a href="{{ route('links.create') }}" class="btn btn-primary">+ Create Link</a>
+            <a href="{{ route('links.create', $bio->slug) }}" class="btn btn-primary">+ Create Link</a>
         </ul>
     </div>
 
@@ -36,9 +36,10 @@
                         <td><img src="{{ $row->icon_url }}" alt="{{ $row->title }}" class="img-thumbnail" style="width:75px; height:75px;"></td>
                         <td>{{ $row->created_at }}</td>
                         <td>
-                            <a href="{{ route('links.edit', $row->id) }}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
-                                <iconify-icon icon="lucide:edit"></iconify-icon>
-                            </a>
+                            <a href="{{ route('links.edit', ['slug' => $bio->slug, 'id' => $row->id]) }}" 
+                                class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                 <iconify-icon icon="lucide:edit"></iconify-icon>
+                             </a>
                             <a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center delete-link" data-id="{{ $row->id }}">
                                 <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                             </a>

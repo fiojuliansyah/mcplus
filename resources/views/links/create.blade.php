@@ -4,9 +4,9 @@
 <div class="dashboard-main-body">
 
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-        <h6 class="fw-semibold mb-0">Create Bio</h6>
+        <h6 class="fw-semibold mb-0">Create Link</h6>
         <ul class="d-flex align-items-center gap-2">
-            <a href="{{ route('links.index') }}" class="btn btn-secondary">Back</a>
+            <a href="{{ route('links.index', $bio->slug) }}" class="btn btn-secondary">Back</a>
         </ul>
     </div>
 
@@ -14,26 +14,14 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('links.store') }}" method="POST" class="row gy-3" enctype="multipart/form-data">
+                    <form action="{{ route('links.store', ['slug' => $bio->slug]) }}" method="POST" class="row gy-3" enctype="multipart/form-data">
                         @csrf
 
                         <!-- Title -->
+                        <input type="hidden" name="bio_id" value="{{ $bio->id }}">
                         <div class="col-md-6">
                             <label class="form-label">Title</label>
                             <input type="text" name="title" class="form-control" value="{{ old('title') }}" required>
-                        </div>
-                        
-                        <!-- Bio -->
-                        <div class="col-md-6">
-                            <label class="form-label">Bio</label>
-                            <select name="bios_id" class="form-control" required>
-                                <option value="">Select Category</option>
-                                @foreach($bios as $bio)
-                                <option value="{{ $bio->id }}" {{ old('category_id') == $bio->id ? 'selected' : '' }}>
-                                    {{ $bio->name }}
-                                </option>
-                                @endforeach
-                            </select>
                         </div>
 
                         <!-- Link -->
