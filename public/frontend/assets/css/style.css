@@ -747,34 +747,40 @@ kbd {
   display: inline-block;
   line-height: 1.5em;
   font-weight: 500;
-  background: #FEBE00;
+  background: transparent; /* Menghapus background */
   border-radius: 1.6em;
   padding: 1px;
   position: relative;
-  border: none;
+  border: 2px solid #FEBE00; /* Outline warna gold */
   outline: none;
   cursor: pointer;
-  -webkit-transition: all 0.3s ease;
+  color: #FEBE00; /* Warna teks gold */
   transition: all 0.3s ease;
 }
 
+/* Tombol besar */
 .cs-btn.cs-style2.cs-btn_lg > span {
-  padding: 12px 25px;
+  padding: 16px 30px; /* Sesuaikan ukuran */
+  font-size: 18px;
 }
 
+/* Tombol kecil */
 .cs-btn.cs-style2.cs-btn_sm > span {
-  padding: 8px 15px;
+  padding: 5px 12px; /* Sesuaikan ukuran */
+  font-size: 12px;
 }
+
 
 .cs-btn.cs-style2 > span {
   display: inline-block;
   position: relative;
   z-index: 1;
   padding: 8px 25px;
-  background-color: #fff;
+  background-color: transparent; /* Hapus background */
   border-radius: inherit;
   width: inherit;
   text-align: center;
+  color: inherit; /* Warna mengikuti parent */
 }
 
 .cs-btn.cs-style2 > span.text-left {
@@ -787,58 +793,48 @@ kbd {
 }
 
 .cs-btn.cs-style2 i, .cs-btn.cs-style2 svg {
-  color: #050023;
+  color: #FEBE00; /* Ikon warna gold */
   margin-right: 10px;
 }
 
 .cs-btn.cs-style2:after {
   content: '';
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  border-radius: inherit;
-  background: linear-gradient(116.85deg, #E700B8 0%, #E700B8 100%);
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  opacity: 0;
+  display: none; /* Hilangkan efek hover */
 }
 
 .cs-btn.cs-style2 input {
   outline: none;
   background-color: transparent;
-  color: currentColor;
+  color: #FEBE00; /* Warna teks gold */
   border: 0px solid;
-  border-image-slice: 1;
-  border-left-width: 1px;
-  border-image-source: linear-gradient(116.85deg, rgba(252, 70, 107, 0.3) 0%, rgba(63, 94, 251, 0.3) 100%);
+  border-left: 1px solid #FEBE00; /* Outline untuk input dalam button */
   padding-left: 15px;
   margin-left: 15px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
 }
 
+/* Hilangkan efek hover */
 .cs-btn.cs-style2:hover {
-  color: #fff;
+  color: #FEBE00; /* Tetap gold saat hover */
 }
 
 .cs-btn.cs-style2:hover > span {
   background-color: transparent;
 }
 
-.cs-btn.cs-style2:hover i, .cs-btn.cs-style2:hover svg {
-  color: #fff;
+.cs-btn.cs-style2:hover i, 
+.cs-btn.cs-style2:hover svg {
+  color: #FEBE00;
 }
 
 .cs-btn.cs-style2:hover::after {
-  opacity: 1;
+  display: none;
 }
 
 .cs-btn.cs-style2:hover input {
-  border-image-source: linear-gradient(116.85deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);
+  border-left: 1px solid #FEBE00;
 }
+
 
 .cs-section_heading.cs-style1 {
   font-size: 36px;

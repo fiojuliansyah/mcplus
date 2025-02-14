@@ -30,20 +30,19 @@
                       <a href="{{ route('frontend.tutors.index') }}">Careers</a>
                     </li>
                     <li>
-                      <div class="cs-header_btns_wrap">
-                        <a href="{{ route('frontend.time-table') }}" class="cs-btn cs-style2"><span><strong style="color: gold"><i class="far fa-calendar" style="color: gold"></i>TIME TABLE</strong></span></a>
+                      <div class="cs-header_btns_wrap d-flex" style="padding: 20px">
+                        <a href="{{ route('frontend.time-table') }}" class="cs-btn cs-style2 cs-btn_sm"><span><strong><i class="far fa-calendar" style="color: gold"></i>TIME TABLE</strong></span></a>
                       </div>
                     </li>
                     <li>
-                      <div class="cs-header_btns_wrap">
-                        <a href="connect-wallet.html" class="cs-btn cs-style1"><span><strong>7 DAYS TRIAL</strong></span>
+                      <div class="cs-header_btns_wrap d-flex" style="padding: 20px">
+                        <a href="#" class="cs-btn cs-style1"><span><strong>7 DAYS TRIAL</strong></span>
                         
                           <!-- Border animation -->
                           <span style="
                             position: absolute;
                             top: 0; left: 0; right: 0; bottom: 0;
                             border-radius: 1.6em;
-                            box-sizing: border-box;
                             border: 2px solid transparent;
                             animation: glowingBorder 3s infinite linear;
                           "></span>
@@ -72,23 +71,6 @@
                               border-color: rgba(255, 255, 255, 0);
                               box-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
                             }
-                          }
-                        
-                          /* Style button */
-                          .cs-btn.cs-style1 {
-                            display: inline-block;
-                            line-height: 1.5em;
-                            color: #fff;
-                            font-weight: 500;
-                            background-color: #B70092;
-                            border-radius: 1.6em;
-                            padding: 8px 25px;
-                            position: relative;
-                            border: none;
-                            outline: none;
-                            cursor: pointer;
-                            -webkit-transition: all 0.3s ease;
-                            transition: all 0.3s ease;
                           }
                         </style>
                         
