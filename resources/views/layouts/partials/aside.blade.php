@@ -46,6 +46,19 @@
                     </li>
                 </ul>
             </li>
+            <li class="sidebar-menu-group-title">Survey</li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <i class="ri-user-settings-line text-xl me-14 d-flex w-auto"></i>
+                    <span>Question</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('questions.index') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Questions</a>
+                    </li>
+                </ul>
+            </li>
             <li class="sidebar-menu-group-title">Setting</li>
             <li class="dropdown">
                 <a href="javascript:void(0)">

@@ -36,7 +36,7 @@
                     </li>
                     <li>
                       <div class="cs-header_btns_wrap d-flex" style="padding: 20px">
-                        <a href="#" class="cs-btn cs-style1"><span><strong>7 DAYS TRIAL</strong></span>
+                        <a href="{{ route('frontend.survey') }}" class="cs-btn cs-style1"><span><strong>7 DAYS TRIAL</strong></span>
                         
                           <!-- Border animation -->
                           <span style="

@@ -6,15 +6,18 @@ use App\Http\Controllers\LinkController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TutorController;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\PlusianKitController;
 use App\Http\Controllers\FormProgramController;
 use App\Http\Controllers\TranslationController;
 use App\Http\Controllers\ProgramImageController;
 use App\Http\Controllers\ProgramBannerController;
+use App\Http\Controllers\frontend\SurveyController;
 use App\Http\Controllers\PlusianKitImageController;
 use App\Http\Controllers\frontend\HomepageController;
 use App\Http\Controllers\frontend\TutorsPageController;
@@ -33,6 +36,7 @@ Route::get('/tutors', [TutorsPageController::class, 'index'])->name('frontend.tu
 Route::get('/tutors/{slug}', [TutorsPageController::class, 'detail'])->name('frontend.tutors.detail');
 Route::get('/programs', [ProgramPageController::class, 'index'])->name('frontend.programs.index');
 Route::get('/programs/{slug}', [ProgramPageController::class, 'detail'])->name('frontend.programs.detail');
+Route::get('/survey-subjects', [SurveyController::class, 'index'])->name('frontend.survey');
 
 Route::middleware('auth')->prefix('manage')->group(function () {
     Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
@@ -44,6 +48,21 @@ Route::middleware('auth')->prefix('manage')->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('tutors', TutorController::class);
+    Route::resource('questions', QuestionController::class);
+
+    Route::prefix('questions/{questionId}/answers')->group(function () {
+        Route::get('/', [AnswerController::class, 'index'])->name('answers.index');
+        Route::get('/create', [AnswerController::class, 'create'])->name('answers.create');
+        Route::post('/', [AnswerController::class, 'store'])->name('answers.store');
+        Route::get('/{answerId}/edit', [AnswerController::class, 'edit'])->name('answers.edit');
+        Route::put('/{answerId}', [AnswerController::class, 'update'])->name('answers.update');
+        Route::delete('/{answerId}', [AnswerController::class, 'destroy'])->name('answers.destroy');
+    });
+
+    Route::post('/survey/store', [SurveyController::class, 'store'])->name('survey.store');
+
+
+
     Route::resource('plusian-kits', PlusianKitController::class);
     
     Route::prefix('plusian-kit/{slug}/images')->group(function () {
