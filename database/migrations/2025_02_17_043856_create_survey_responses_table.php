@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('survey_responses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('survey_users')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('question_id')->constrained()->onDelete('cascade');
             $table->foreignId('answer_id')->nullable()->constrained()->onDelete('cascade'); // Null jika jawaban berupa teks
             $table->text('response_text')->nullable(); // Menyimpan jawaban teks
