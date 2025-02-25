@@ -40,6 +40,7 @@ Route::get('/tutors/{slug}', [TutorsPageController::class, 'detail'])->name('fro
 Route::get('/programs', [ProgramPageController::class, 'index'])->name('frontend.programs.index');
 Route::get('/programs/{slug}', [ProgramPageController::class, 'detail'])->name('frontend.programs.detail');
 Route::get('/survey-subjects', [SurveyController::class, 'index'])->name('frontend.survey');
+Route::post('/survey/store', [SurveyController::class, 'store'])->name('survey.store');
 Route::get('/survey-subjects/detail', [SurveyController::class, 'detail'])->name('frontend.survey.detail');
 
 Route::middleware('auth')->prefix('manage')->group(function () {
@@ -83,10 +84,6 @@ Route::middleware('auth')->prefix('manage')->group(function () {
         Route::put('/{answerId}', [AnswerController::class, 'update'])->name('answers.update');
         Route::delete('/{answerId}', [AnswerController::class, 'destroy'])->name('answers.destroy');
     });
-
-    Route::post('/survey/store', [SurveyController::class, 'store'])->name('survey.store');
-
-
 
     Route::resource('plusian-kits', PlusianKitController::class);
     

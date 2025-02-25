@@ -50,10 +50,8 @@ class SurveyController extends Controller
             return redirect()->back()->with('error', 'Failed to save user data.');
         }
     
-        $categorySlug = null;
-        // $tutorSlug = null;
-        $tutorMode = null; // Baru: mode untuk menampilkan tutor (single atau multiple)
-        // $timetableSlug = null;
+        $categorySlugs = []; // Diubah menjadi array untuk menampung multiple categories
+        $tutorMode = null; // Mode untuk menampilkan tutor (single atau multiple)
     
         foreach ($validatedData['answers'] as $questionId => $answerValue) {
             if (is_array($answerValue)) {
@@ -69,7 +67,7 @@ class SurveyController extends Controller
                         'answer_id' => $singleAnswerId,
                     ]);
                     
-                    $this->checkAnswerForSlug($singleAnswerId, $categorySlug, $tutorSlug, $tutorMode, $timetableSlug);
+                    $this->checkAnswerForSlug($singleAnswerId, $categorySlugs, $tutorSlug, $tutorMode, $timetableSlug);
                 }
             } elseif (is_numeric($answerValue)) {
                 $surveyResponse = SurveyResponse::create([
@@ -83,7 +81,7 @@ class SurveyController extends Controller
                     'answer_id' => $answerValue,
                 ]);
                 
-                $this->checkAnswerForSlug($answerValue, $categorySlug, $tutorSlug, $tutorMode, $timetableSlug);
+                $this->checkAnswerForSlug($answerValue, $categorySlugs, $tutorSlug, $tutorMode, $timetableSlug);
             } else {
                 SurveyResponse::create([
                     'user_id' => $user->id,
@@ -95,8 +93,8 @@ class SurveyController extends Controller
     
         $redirectParams = ['classroom_id' => $validatedData['classroom_id']];
         
-        if ($categorySlug) {
-            $redirectParams['category'] = $categorySlug;
+        if (!empty($categorySlugs)) {
+            $redirectParams['categories'] = implode(',', $categorySlugs); // Konversi array ke string dengan pemisah koma
         }
         
         if ($tutorMode) {
@@ -110,7 +108,7 @@ class SurveyController extends Controller
         return redirect()->route('frontend.survey.detail', $redirectParams);
     }
     
-    private function checkAnswerForSlug($answerId, &$categorySlug, &$tutorSlug, &$tutorMode, &$timetableSlug)
+    private function checkAnswerForSlug($answerId, &$categorySlugs, &$tutorSlug, &$tutorMode, &$timetableSlug)
     {
         $answer = Answer::find($answerId);
         
@@ -121,7 +119,7 @@ class SurveyController extends Controller
         // Periksa apakah ini adalah kategori
         $category = Category::where('slug', $answer->slug)->first();
         if ($category) {
-            $categorySlug = $answer->slug;
+            $categorySlugs[] = $answer->slug; // Tambahkan ke array daripada menimpa nilai
             return;
         }
         
@@ -152,7 +150,8 @@ class SurveyController extends Controller
         $title = 'Time Table';
         
         $classroom_id = $request->input('classroom_id');
-        $categorySlug = $request->input('category');
+        $categorySlugsParam = $request->input('categories');
+        $categorySlugs = $categorySlugsParam ? explode(',', $categorySlugsParam) : []; // Konversi string kembali ke array
         $tutorSlug = $request->input('tutor');
         $tutorMode = $request->input('tutor_mode'); // Mode tutor dari parameter
         
@@ -174,9 +173,9 @@ class SurveyController extends Controller
                 ->with(['category', 'tutor']);
             
             // Apply category filter if provided
-            if ($categorySlug) {
-                $timetableQuery->whereHas('category', function($q) use ($categorySlug) {
-                    $q->where('slug', $categorySlug);
+            if (!empty($categorySlugs)) {
+                $timetableQuery->whereHas('category', function($q) use ($categorySlugs) {
+                    $q->whereIn('slug', $categorySlugs); // Gunakan whereIn untuk multiple categories
                 });
             }
             
@@ -221,7 +220,7 @@ class SurveyController extends Controller
         
         // Passing data filter ke view
         $filters = [
-            'category' => $categorySlug,
+            'categories' => $categorySlugs, // Sekarang categories adalah array
             'tutor_mode' => $tutorMode
         ];
         
