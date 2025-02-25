@@ -3,7 +3,7 @@
 @section('content')
     <div class="cs-height_100 cs-height_lg_70"></div>
           <!-- Container with properly centered icon box -->
-          <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <div class="non-printable" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <!-- Icon in Gradient Box - now properly centered -->
             <div style="position: relative; background: linear-gradient(135deg, #179DCF, #B70092); width: 60px; height: 60px; border-radius: 20%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 15px rgba(183, 0, 146, 0.6); margin-bottom: 15px; z-index: 3;">
               <div style="position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; z-index: -1; background: linear-gradient(135deg, #179DCF, #B70092); filter: blur(8px); opacity: 0.8; border-radius: 50%;"></div>
@@ -24,11 +24,24 @@
               </p>
             </div>
           </div>
-        <div class="cs-height_100 cs-height_lg_70"></div>
+        <div class="cs-height_100 cs-height_lg_70 non-printable"></div>
         
-        <!-- Active Filters Section (if any) -->
+        <!-- Print Button - Non-printable -->
+        <div class="container non-printable">
+          <div class="text-right" style="margin-bottom: 20px;">
+            <button onclick="printSchedule()" class="cs-btn cs-style1" style="background-color: #B70092; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+              </svg>
+              Print Schedule
+            </button>
+          </div>
+        </div>
+        
+        <!-- Active Filters Section (if any) - Non-printable -->
         @if(isset($filters) && (isset($filters['category']) || isset($filters['tutor']) || isset($filters['timetable'])))
-        <div class="container">
+        <div class="container non-printable">
           <div style="background-color: #38004D; border-radius: 15px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 30px; border: 2px solid #470061;">
             <h5 style="color: white; margin-bottom: 10px;">Active Filters:</h5>
             <div style="display: flex; flex-wrap: wrap; gap: 10px;">
@@ -60,47 +73,17 @@
           </div>
         </div>
         @endif
-        
-        {{-- <section class="cs-bg" data-src="/frontend/assets/img/page_head_bg.svg">
-          <div class="cs-height_30 cs-height_lg_30"></div>
-          <div class="cs-height_30 cs-height_lg_30"></div>
-          <div class="container">
-            <div class="text-center">
-              <div style="position: relative; max-width: 800px; margin: 40px auto 70px;">
-                <div style="background-color: #38004D; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; position: relative; border: 2px solid #470061;">
-                  <h4 style="margin: 5px;">Click to see our <span style="color: #FEBE00">program schedule</span></h4>
-                  <div style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 20px solid #38004D; filter: drop-shadow(0 4px 3px rgba(0,0,0,0.1)); z-index: 1;"></div>
-                  <div style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 22px solid transparent; border-right: 22px solid transparent; border-top: 22px solid #470061; z-index: 0;"></div>
-                </div>
-              </div>
-              <div class="cs-height_30 cs-height_lg_30"></div>
-              <div class="row">
-                @foreach ($classrooms as $classroom)  
-                  <div class="col-lg-3 col-sm-6">
-                    <div style="width: 80%; max-width: 180px; margin: 0 auto; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" 
-                         class="{{ (request()->input('classroom_id') == $classroom->id) ? 'active-classroom' : '' }}">
-                      <div style="text-align: center; padding: 25px 10px; background: {{ (request()->input('classroom_id') == $classroom->id) ? '#FEBE00' : 'linear-gradient(to bottom, #ffffff, #a9a9a9)' }}; border-radius: 10px;">
-                        <h4 style="margin: 0; color: {{ (request()->input('classroom_id') == $classroom->id) ? '#B70092' : '#333' }}; font-weight: 600;">
-                          <a href="{{ route('frontend.survey.detail', array_merge(request()->except('classroom_id'), ['classroom_id' => $classroom->id])) }}" 
-                            style="text-decoration: none; color: inherit; display: block;">
-                            {{ $classroom->name }}
-                          </a>
-                        </h4>
-                      </div>
-                    </div>
-                    <div style="height: 30px;"></div>
-                  </div>
-                @endforeach
-              </div> 
-            </div>
-          </div>
-        </section> --}}
-
-        <div class="cs-height_100 cs-height_lg_70"></div>
-        <div class="cs-height_100 cs-height_lg_70"></div>
+        <div class="cs-height_100 cs-height_lg_70 non-printable"></div>
 
         <!-- Tampilkan Detail Kelas -->
-        <div class="container">
+        <div class="container printable-content" id="printable-section">
+            <!-- Content for Print Only -->
+            <div class="print-only-header" style="display: none; text-align: center; margin-bottom: 20px;">
+              <h1 style="color: #FEBE00;">MCPLUS Class Schedule</h1>
+              <p>{{ date('d F Y') }}</p>
+              <hr style="border-top: 2px solid #FEBE00; margin: 20px 0;">
+            </div>
+            
             @if ($classrooms->isEmpty())
                 <p class="text-center">No classrooms found.</p>
             @else
@@ -115,14 +98,14 @@
                       <h6 style="display: inline; margin: 0;">#EducationMustWin</h6>
                       <br>
                       <br>
-                      <a href="" class="cs-btn cs-style1">Download</a>
+                      <a href="" class="cs-btn cs-style1 non-printable">Download</a>
                     </span>
                   </div>
-                  <div class="col" style="position: relative; overflow: hidden;">
+                  <div class="col non-printable" style="position: relative; overflow: hidden;">
                     @if ($classroom->promos->isEmpty())
                         <p class="text-center">No promos found.</p>
                     @else
-                        <!-- Promo Section with Scroll and Navigation Buttons -->
+                        <!-- Promo Section with Scroll and Navigation Buttons (for screen only) -->
                         <div style="position: relative; overflow: hidden; padding: 0 40px;">
                           <!-- Container for scrollable content -->
                           <div class="promo-scroll-container-{{ $classroom->id }}" style="display: flex; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; gap: 15px; padding: 10px 0; scrollbar-width: none; -ms-overflow-style: none;">
@@ -169,8 +152,26 @@
                   </div>
                 </div>
 
+                <!-- Promo Section for Print -->
+                @if (!$classroom->promos->isEmpty())
+                <div class="print-only" style="display: none; margin-bottom: 30px;">
+                  <h4 style="color: #B70092; margin-bottom: 15px;">Available Promos</h4>
+                  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                    @foreach ($classroom->promos as $promo)
+                      <div style="border: 1px solid #B70092; border-radius: 10px; padding: 15px; text-align: center; width: 150px;">
+                        <div style="margin-bottom: 10px;">
+                          <strong style="color: #B70092;">{{ $promo->name }}</strong>
+                        </div>
+                        <div style="text-decoration: line-through; margin-bottom: 5px;">RM{{ $promo->normal_price }}</div>
+                        <div style="font-size: 18px; font-weight: bold; color: #B70092;">RM{{ $promo->discount_price }}</div>
+                      </div>
+                    @endforeach
+                  </div>
+                </div>
+                @endif
+
                 @if($classroom->timetables->isEmpty())
-                    <div class="alert" style="background-color: #38004D; color: white; padding: 15px; border-radius: 10px; text-align: center; margin: 20px 0;">
+                    <div class="alert non-printable" style="background-color: #38004D; color: white; padding: 15px; border-radius: 10px; text-align: center; margin: 20px 0;">
                       <p>No schedule available with the selected filters. <a href="{{ route('frontend.survey.detail', ['classroom_id' => $classroom->id]) }}" style="color: #FEBE00; text-decoration: underline;">View all schedules</a></p>
                     </div>
                 @else
@@ -180,7 +181,7 @@
 
                     @foreach ($timetablesByDay as $day => $timetables)
                         <table class="table table-bordered" style="border-color: #080326; border-collapse: collapse; width: 100%; border-radius: 10px; overflow: hidden;
-                          border-collapse: collapse; width: 100%; border-radius: 10px; overflow: hidden;">
+                          border-collapse: collapse; width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 20px;">
                           <thead style="background-color: #FEBE00; text-align: center;">
                             <tr>
                               <th colspan="3" style="color: #262624; text-align: center;"><strong>{{ strtoupper($day) }}</strong></th>
@@ -198,17 +199,19 @@
                                     <tr>
                                         <td>{{ \Carbon\Carbon::parse($timeTable->start)->format('H:i') }} - {{ \Carbon\Carbon::parse($timeTable->end)->format('H:i') }}</td>
                                         <td>
-                                          <a href="#" 
+                                          <a href="#" class="non-printable" 
                                              style="text-decoration: none; color: {{ isset($filters['category']) && $filters['category'] == ($timeTable->category->slug ?? '') ? '#B70092' : 'inherit' }}; font-weight: {{ isset($filters['category']) && $filters['category'] == ($timeTable->category->slug ?? '') ? 'bold' : 'normal' }};">
                                             {{ strtoupper($timeTable->category->name ?? '') }}
                                           </a> 
+                                          <span class="print-only" style="display: none;">{{ strtoupper($timeTable->category->name ?? '') }}</span>
                                           ({{ $timeTable->group }})
                                         </td>
                                         <td>
-                                          <a href="#" 
+                                          <a href="#" class="non-printable" 
                                              style="text-decoration: none; color: {{ isset($filters['tutor']) && $filters['tutor'] == ($timeTable->tutor->slug ?? '') ? '#179DCF' : 'inherit' }}; font-weight: {{ isset($filters['tutor']) && $filters['tutor'] == ($timeTable->tutor->slug ?? '') ? 'bold' : 'normal' }};">
                                             {{ $timeTable->tutor->name ?? '' }}
                                           </a>
+                                          <span class="print-only" style="display: none;">{{ $timeTable->tutor->name ?? '' }}</span>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -223,8 +226,78 @@
                   <br>          
                 @endforeach
             @endif
+            
+            <!-- Print footer -->
+            <div class="print-only-footer" style="display: none; text-align: center; margin-top: 30px; font-size: 12px;">
+              <p>Printed on {{ date('d F Y, H:i') }} | MCPLUS Education Center</p>
+              <p>For more information, please contact us at info@mcplus.edu.my or +60 12-345 6789</p>
+            </div>
         </div>
-    <div class="cs-height_70 cs-height_lg_40"></div>
+    <div class="cs-height_70 cs-height_lg_40 non-printable"></div>
+
+    <!-- Print Styles -->
+    <style>
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        
+        .printable-content, .printable-content * {
+          visibility: visible;
+        }
+        
+        .non-printable {
+          display: none !important;
+        }
+        
+        .print-only, .print-only-header, .print-only-footer {
+          display: block !important;
+        }
+        
+        .printable-content {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          padding: 20px;
+        }
+        
+        table {
+          page-break-inside: avoid;
+          border: 1px solid #080326 !important;
+        }
+        
+        thead {
+          display: table-header-group;
+        }
+        
+        tr, td, th {
+          page-break-inside: avoid;
+        }
+        
+        h3 {
+          color: #B70092 !important;
+        }
+      }
+      
+      .col-lg-3 > div:first-child:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      }
+      
+      .col-lg-3 > div:first-child:hover > div {
+        background: #FEBE00 !important;
+      }
+      
+      .col-lg-3 > div:first-child:hover h4 {
+        color: #B70092 !important;
+      }
+      
+      .active-classroom {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      }
+    </style>
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
@@ -338,25 +411,10 @@
           }
         }
       });
+      
+      // Print function
+      function printSchedule() {
+        window.print();
+      }
     </script>
-
-    <style>
-      .col-lg-3 > div:first-child:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      }
-      
-      .col-lg-3 > div:first-child:hover > div {
-        background: #FEBE00 !important;
-      }
-      
-      .col-lg-3 > div:first-child:hover h4 {
-        color: #B70092 !important;
-      }
-      
-      .active-classroom {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      }
-    </style>
 @endsection
