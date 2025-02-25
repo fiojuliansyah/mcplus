@@ -174,25 +174,24 @@ class SurveyController extends Controller
                 ->with(['category', 'tutor']);
             
             // Apply category filter if provided
-            // if ($categorySlug) {
-            //     $timetableQuery->whereHas('category', function($q) use ($categorySlug) {
-            //         $q->where('slug', $categorySlug);
-            //     });
-            // }
+            if ($categorySlug) {
+                $timetableQuery->whereHas('category', function($q) use ($categorySlug) {
+                    $q->where('slug', $categorySlug);
+                });
+            }
+            
+            // Get timetables with filters applied
+            $filteredTimetables = $timetableQuery->get();
             
             // Apply tutor filter based on mode
             if ($tutorMode == 'single' && !$tutorSlug) {
-                // Jika mode 'single' (only-1-tutor) dan tidak ada tutorSlug spesifik,
-                // ambil satu tutor saja (yang pertama) untuk setiap kombinasi category dan kelas
-                $timetables = $timetableQuery->get();
-                
                 // Group timetables by category
-                $timetablesByCategory = $timetables->groupBy(function($timetable) {
+                $timetablesByCategory = $filteredTimetables->groupBy(function($timetable) {
                     return $timetable->category_id ?? 'no-category';
                 });
                 
                 // For each category, keep only one tutor
-                $filteredTimetables = collect();
+                $singleTutorTimetables = collect();
                 foreach ($timetablesByCategory as $categoryId => $categoryTimetables) {
                     // Group by tutor within this category
                     $timetablesByTutor = $categoryTimetables->groupBy('tutor_id');
@@ -200,23 +199,23 @@ class SurveyController extends Controller
                     // Take the first tutor's timetables only
                     if ($timetablesByTutor->isNotEmpty()) {
                         $firstTutorTimetables = $timetablesByTutor->first();
-                        $filteredTimetables = $filteredTimetables->merge($firstTutorTimetables);
+                        $singleTutorTimetables = $singleTutorTimetables->merge($firstTutorTimetables);
                     }
                 }
                 
-                $classroom->setRelation('timetables', $filteredTimetables);
+                $classroom->setRelation('timetables', $singleTutorTimetables);
             }
             else if ($tutorSlug) {
                 // If a specific tutor is selected, filter by that tutor
-                $timetableQuery->whereHas('tutor', function($q) use ($tutorSlug) {
-                    $q->where('slug', $tutorSlug);
+                $tutorFilteredTimetables = $filteredTimetables->filter(function($timetable) use ($tutorSlug) {
+                    return $timetable->tutor && $timetable->tutor->slug === $tutorSlug;
                 });
                 
-                $classroom->setRelation('timetables', $timetableQuery->get());
+                $classroom->setRelation('timetables', $tutorFilteredTimetables);
             }
             else {
-                // Mode 'multiple' atau default, tampilkan semua tutor
-                $classroom->setRelation('timetables', $timetableQuery->get());
+                // Mode 'multiple' atau default, tampilkan semua tutor sesuai kategori
+                $classroom->setRelation('timetables', $filteredTimetables);
             }
         }
         

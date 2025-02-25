@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\LanguageSeeder;
 use Database\Seeders\ClassroomSeeder;
+use Database\Seeders\TimeTableSeeder;
 use Database\Seeders\TranslationSeeder;
 use Database\Seeders\RolePermissionSeeder;
 
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
         LanguageSeeder::class,
         TranslationSeeder::class,
         ClassroomSeeder::class,
+        TimeTableSeeder::class,
         ]);
     }
 }
