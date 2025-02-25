@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frontend;
 
 use Illuminate\Http\Request;
 use App\Models\Question;
@@ -11,6 +11,7 @@ use App\Models\Classroom;
 use App\Models\SurveyUser;
 use App\Models\SurveyResponse;
 use App\Models\SurveyResponseAnswer;
+use App\Http\Controllers\Controller;
 
 class SurveyController extends Controller
 {

@@ -35,33 +35,33 @@
               @if(isset($filters['category']) && $filters['category'])
                 <div style="background-color: #B70092; color: white; border-radius: 20px; padding: 5px 15px; display: flex; align-items: center;">
                   <span>Subject: {{ $filters['category'] }}</span>
-                  <a href="{{ route('frontend.detail', array_merge(request()->except('category'), ['classroom_id' => request('classroom_id')])) }}" style="color: white; margin-left: 10px; font-weight: bold; text-decoration: none;">×</a>
+                  <a href="{{ route('frontend.survey.detail', array_merge(request()->except('category'), ['classroom_id' => request('classroom_id')])) }}" style="color: white; margin-left: 10px; font-weight: bold; text-decoration: none;">×</a>
                 </div>
               @endif
               
               @if(isset($filters['tutor']) && $filters['tutor'])
                 <div style="background-color: #179DCF; color: white; border-radius: 20px; padding: 5px 15px; display: flex; align-items: center;">
                   <span>Tutor: {{ $filters['tutor'] }}</span>
-                  <a href="{{ route('frontend.detail', array_merge(request()->except('tutor'), ['classroom_id' => request('classroom_id')])) }}" style="color: white; margin-left: 10px; font-weight: bold; text-decoration: none;">×</a>
+                  <a href="{{ route('frontend.survey.detail', array_merge(request()->except('tutor'), ['classroom_id' => request('classroom_id')])) }}" style="color: white; margin-left: 10px; font-weight: bold; text-decoration: none;">×</a>
                 </div>
               @endif
               
               @if(isset($filters['timetable']) && $filters['timetable'])
                 <div style="background-color: #FEBE00; color: #38004D; border-radius: 20px; padding: 5px 15px; display: flex; align-items: center;">
                   <span>Schedule: {{ $filters['timetable'] }}</span>
-                  <a href="{{ route('frontend.detail', array_merge(request()->except('timetable'), ['classroom_id' => request('classroom_id')])) }}" style="color: #38004D; margin-left: 10px; font-weight: bold; text-decoration: none;">×</a>
+                  <a href="{{ route('frontend.survey.detail', array_merge(request()->except('timetable'), ['classroom_id' => request('classroom_id')])) }}" style="color: #38004D; margin-left: 10px; font-weight: bold; text-decoration: none;">×</a>
                 </div>
               @endif
               
               <div style="margin-left: auto;">
-                <a href="{{ route('frontend.detail', ['classroom_id' => request('classroom_id')]) }}" style="background-color: #262624; color: white; border-radius: 20px; padding: 5px 15px; text-decoration: none; display: inline-block;">Clear All</a>
+                <a href="{{ route('frontend.survey.detail', ['classroom_id' => request('classroom_id')]) }}" style="background-color: #262624; color: white; border-radius: 20px; padding: 5px 15px; text-decoration: none; display: inline-block;">Clear All</a>
               </div>
             </div>
           </div>
         </div>
         @endif
         
-        <section class="cs-bg" data-src="/frontend/assets/img/page_head_bg.svg">
+        {{-- <section class="cs-bg" data-src="/frontend/assets/img/page_head_bg.svg">
           <div class="cs-height_30 cs-height_lg_30"></div>
           <div class="cs-height_30 cs-height_lg_30"></div>
           <div class="container">
@@ -94,7 +94,7 @@
               </div> 
             </div>
           </div>
-        </section>
+        </section> --}}
 
         <div class="cs-height_100 cs-height_lg_70"></div>
         <div class="cs-height_100 cs-height_lg_70"></div>
@@ -171,7 +171,7 @@
 
                 @if($classroom->timetables->isEmpty())
                     <div class="alert" style="background-color: #38004D; color: white; padding: 15px; border-radius: 10px; text-align: center; margin: 20px 0;">
-                      <p>No schedule available with the selected filters. <a href="{{ route('frontend.detail', ['classroom_id' => $classroom->id]) }}" style="color: #FEBE00; text-decoration: underline;">View all schedules</a></p>
+                      <p>No schedule available with the selected filters. <a href="{{ route('frontend.survey.detail', ['classroom_id' => $classroom->id]) }}" style="color: #FEBE00; text-decoration: underline;">View all schedules</a></p>
                     </div>
                 @else
                     @php
