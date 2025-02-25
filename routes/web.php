@@ -12,6 +12,9 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\TimeTableController;
+use App\Http\Controllers\ClassPromoController;
 use App\Http\Controllers\PlusianKitController;
 use App\Http\Controllers\FormProgramController;
 use App\Http\Controllers\TranslationController;
@@ -37,6 +40,7 @@ Route::get('/tutors/{slug}', [TutorsPageController::class, 'detail'])->name('fro
 Route::get('/programs', [ProgramPageController::class, 'index'])->name('frontend.programs.index');
 Route::get('/programs/{slug}', [ProgramPageController::class, 'detail'])->name('frontend.programs.detail');
 Route::get('/survey-subjects', [SurveyController::class, 'index'])->name('frontend.survey');
+Route::get('/survey-subjects/detail', [SurveyController::class, 'detail'])->name('frontend.survey.detail');
 
 Route::middleware('auth')->prefix('manage')->group(function () {
     Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
@@ -49,6 +53,27 @@ Route::middleware('auth')->prefix('manage')->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('tutors', TutorController::class);
     Route::resource('questions', QuestionController::class);
+    Route::resource('classrooms', ClassroomController::class);
+
+    Route::prefix('classroom/{slug}/timetables')->group(function () {
+        Route::get('/', [TimeTableController::class, 'index'])->name('timetables.index');
+        Route::get('/create', [TimeTableController::class, 'create'])->name('timetables.create');
+        Route::post('/', [TimeTableController::class, 'store'])->name('timetables.store');
+        Route::get('/{id}/edit', [TimeTableController::class, 'edit'])->name('timetables.edit');
+        Route::put('/{id}', [TimeTableController::class, 'update'])->name('timetables.update');
+        Route::delete('/{id}', [TimeTableController::class, 'destroy'])->name('timetables.destroy');
+    });
+
+    Route::prefix('classroom/{slug}/promos')->group(function () {
+        Route::get('/', [ClassPromoController::class, 'index'])->name('promos.index');
+        Route::get('/create', [ClassPromoController::class, 'create'])->name('promos.create');
+        Route::post('/', [ClassPromoController::class, 'store'])->name('promos.store');
+        Route::get('/{id}/edit', [ClassPromoController::class, 'edit'])->name('promos.edit');
+        Route::put('/{id}', [ClassPromoController::class, 'update'])->name('promos.update');
+        Route::delete('/{id}', [ClassPromoController::class, 'destroy'])->name('promos.destroy');
+    });
+    
+    // Route::resource('timetables', TimeTableController::class);
 
     Route::prefix('questions/{questionId}/answers')->group(function () {
         Route::get('/', [AnswerController::class, 'index'])->name('answers.index');

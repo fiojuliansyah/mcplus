@@ -61,7 +61,12 @@
                         </div>
                         <div class="col-md-6">
                             <label class="formLabel">Class</label>
-                            <input type="text" class="form-control mt-2" name="class" required>
+                            <select name="classroom_id" class="form-control mt-2" required>
+                                <option value="">Choose</option>
+                                @foreach ($classrooms as $classroom)
+                                    <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
             
@@ -75,11 +80,11 @@
                             <h1 class="mainheading">Survey Subjects</h1>
                             <p>{{ $question->question_text }}</p>
                         </article>
-
-                        @if ($question->type == 'multiple')   
+            
+                        @if ($question->type == 'multiple')
                             <fieldset>
                                 <div class="row">
-                                    @foreach ($question->answers as $answer) 
+                                    @foreach ($question->answers as $answer)
                                         <div class="col-md-5 lap-50 sm-100">
                                             <div class="radiofield fadeLeft">
                                                 <input type="checkbox" name="answers[{{ $question->id }}][]" value="{{ $answer->id }}">
@@ -90,17 +95,27 @@
                                 </div>
                             </fieldset>
                         @elseif($question->type == 'single')
-                            <input type="text" class="form-control" name="answers[{{ $question->id }}]" required>
+                            <fieldset>
+                                <div class="row">
+                                    @foreach ($question->answers as $answer)
+                                        <div class="col-md-5 lap-50 sm-100">
+                                            <div class="radiofield fadeLeft">
+                                                <input type="radio" name="answers[{{ $question->id }}]" value="{{ $answer->id }}">
+                                                <label class="formLabel">{{ $answer->answer_text }}</label>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </fieldset>
                         @else
                             <textarea class="form-control" name="answers[{{ $question->id }}]" required></textarea>
                         @endif
-
+            
                         <button class="next" type="button">Next</button>
                     </section>
                 @endforeach
-
             
-                <!-- Step Terakhir: Tombol Submit -->
+                <!-- Final Step: Submit Button -->
                 <section class="steps">
                     <article class="step_content">
                         <h1 class="mainheading">Final Step</h1>
@@ -109,22 +124,8 @@
             
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </section>
-            </form>   
-        </section>
-        <div class="loading">
-            <img src="/survey/assets/images/loading.gif" alt="loading">
-        </div>
-
-        <section class="thankyou">
-            <img class="fadedown" src="/survey/assets/images/thankyou/champagne toast-bro.png" alt="champagne toast-bro">
-            <article class="thankyouContent">
-                <h1 class="fadedown delay-100ms">Thankyou</h1>
-                <p class="fadedown delay-200ms">For Your Feedback</p>
-            </article>
-            <div class="subscribeField fadedown delay-300ms">
-                <input type="email" name="subscribe" id="subscribe" placeholder="Subcribe your Email">
-                <button type="button">Subcribe</button>
-            </div>
+            </form>
+            
         </section>
     </main>
 
@@ -132,36 +133,27 @@
 
     <div id="error"></div>
 
-
-    <!-- Bootstrap 5 -->
     <script src="/survey/assets/js/bootstrap/bootstrap.min.js"></script>
-
-    <!-- jQuery -->
     <script src="/survey/assets/js/jQuery/jquery-3.6.4.min.js"></script>
-
-    <!-- My JS -->
     <script src="/survey/assets/js/custom.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const steps = document.querySelectorAll(".steps"); // Semua step
-            const nextButtons = document.querySelectorAll(".next"); // Tombol Next
+            const steps = document.querySelectorAll(".steps");
+            const nextButtons = document.querySelectorAll(".next");
             let currentStep = 0;
     
-            // Tampilkan step pertama
             steps.forEach((step, index) => {
-                if (index !== 0) step.style.display = "none"; // Sembunyikan step selain yang pertama
+                if (index !== 0) step.style.display = "none";
             });
     
-            // Fungsi pindah ke step berikutnya
             function nextStep() {
                 if (currentStep < steps.length - 1) {
-                    steps[currentStep].style.display = "none"; // Sembunyikan step sekarang
+                    steps[currentStep].style.display = "none";
                     currentStep++;
-                    steps[currentStep].style.display = "block"; // Tampilkan step berikutnya
+                    steps[currentStep].style.display = "block";
                 }
             }
     
-            // Event listener untuk semua tombol Next
             nextButtons.forEach(button => {
                 button.addEventListener("click", function() {
                     nextStep();

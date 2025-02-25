@@ -26,23 +26,27 @@
                 <ul class="sidebar-submenu">
                     <li>
                         <a href="{{ route('tutors.index') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Manage Tutors</a>
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Tutors</a>
                     </li>
                     <li>
                         <a href="{{ route('bios.index') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Manage Bio</a>
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Bio</a>
                     </li>
                     <li>
                         <a href="{{ route('programs.index') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Manage Program</a>
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Program</a>
                     </li>
                     <li>
                         <a href="{{ route('plusian-kits.index') }}"><i
-                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Manage Plusian Kit</a>
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Plusian Kit</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('classrooms.index') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Class</a>
                     </li>
                     <li>
                         <a href="{{ route('categories.index') }}"><i
-                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Category</a>
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Subjects</a>
                     </li>
                 </ul>
             </li>

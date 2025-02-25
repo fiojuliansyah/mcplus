@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Models\Classroom;
 use App\Models\PlusianKit;
 use Illuminate\Http\Request;
 use App\Helpers\TranslationHelper;
@@ -15,10 +16,18 @@ class HomepageController extends Controller
         $title = 'Home Page';
         return view('frontend.homepage',compact('title'));
     }
+
     public function timeTable()
     {
         $title = 'Time Table';
-        return view('frontend.time-table',compact('title'));
+        
+        $classrooms = Classroom::with(['timetables', 'promos'])
+                        ->whereHas('timetables', function($query) {
+                            $query->whereNotNull('id');
+                        })
+                        ->get();
+                        
+        return view('frontend.time-table', compact('title', 'classrooms'));
     }
 
     public function schedules(Request $request)

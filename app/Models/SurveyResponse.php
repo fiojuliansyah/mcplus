@@ -9,21 +9,23 @@ class SurveyResponse extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'question_id', 'answer_id', 'response_text'];
+    protected $fillable = ['user_id', 'question_id', 'response_text'];
 
+    public function answers()
+    {
+        return $this->belongsToMany(Answer::class, 'survey_response_answers')
+                    ->withTimestamps();
+    }
+
+    // Relasi ke user, jika diperlukan
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Relasi ke pertanyaan
     public function question()
     {
         return $this->belongsTo(Question::class);
     }
-
-    public function answer()
-    {
-        return $this->belongsTo(Answer::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(SurveyUser::class, 'user_id');
-    }
-
 }

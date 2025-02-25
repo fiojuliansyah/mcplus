@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Question;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class AnswerController extends Controller
 {
@@ -32,6 +33,7 @@ class AnswerController extends Controller
         Answer::create([
             'question_id' => $question->id,
             'answer_text' => $request->answer_text,
+            'slug' => Str::slug($request->answer_text),
         ]);
 
         return redirect()->route('answers.index', $question->id)->with('success', 'Answer created successfully!');
@@ -53,6 +55,7 @@ class AnswerController extends Controller
         $answer = Answer::findOrFail($answerId);
         $answer->update([
             'answer_text' => $request->answer_text,
+            'slug' => Str::slug($request->answer_text),
         ]);
 
         return redirect()->route('answers.index', $questionId)->with('success', 'Answer updated successfully!');

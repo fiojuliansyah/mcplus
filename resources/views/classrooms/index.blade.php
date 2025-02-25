@@ -4,9 +4,9 @@
 <div class="dashboard-main-body">
 
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-        <h6 class="fw-semibold mb-0">Answer List for: {{ $question->question_text }}</h6>
+        <h6 class="fw-semibold mb-0">Classroom List</h6>
         <ul class="d-flex align-items-center gap-2">
-            <a href="{{ route('answers.create', $question->id) }}" class="btn btn-primary">+ Create Answer</a>
+            <a href="{{ route('classrooms.create') }}" class="btn btn-primary">+ Create Classroom</a>
         </ul>
     </div>
 
@@ -15,22 +15,32 @@
             <table class="table bordered-table mb-0" id="dataTable" data-page-length='10'>
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Answer Text</th>
-                        <th>Action</th>
+                        <th></th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Slug</th>
+                        <th scope="col">Features</th>
+                        <th scope="col">Action</th>                        
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($answers as $answer)
+                    @foreach($classrooms as $classroom)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td class="text-primary-600">{{ $answer->answer_text }}</td>
+                        <td><a href="{{ route('classrooms.show', $classroom->slug) }}" class="text-primary-600">{{ $classroom->name }}</a></td>
+                        <td>{{ $classroom->slug }}</td>
                         <td>
-                            <a href="{{ route('answers.edit', [$question->id, $answer->id]) }}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                            <a href="{{ route('timetables.index', $classroom->slug) }}" class="btn btn-sm btn-primary">
+                                TimeTables
+                            </a>
+                            <a href="{{ route('promos.index', $classroom->slug) }}" class="btn btn-sm btn-warning">
+                                Price / Promo
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ route('classrooms.edit', $classroom->slug) }}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                 <iconify-icon icon="lucide:edit"></iconify-icon>
                             </a>
-                            <a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center delete-answer" 
-                               data-question-id="{{ $question->id }}" data-answer-id="{{ $answer->id }}">
+                            <a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center delete-classroom" data-id="{{ $classroom->slug }}">
                                 <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                             </a>
                         </td>
@@ -42,7 +52,6 @@
     </div>
 </div>
 
-<!-- Modal Konfirmasi Hapus -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -51,7 +60,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete this answer?
+        Are you sure you want to delete this classroom?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -71,16 +80,14 @@
 <script>
     let table = new DataTable('#dataTable');
     
-    // Modal Delete Confirmation
-    const deleteButtons = document.querySelectorAll('.delete-answer');
+    const deleteButtons = document.querySelectorAll('.delete-classroom');
     const deleteForm = document.getElementById('deleteForm');
     const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
 
     deleteButtons.forEach(button => {
         button.addEventListener('click', function () {
-            const questionId = this.getAttribute('data-question-id');
-            const answerId = this.getAttribute('data-answer-id');
-            const actionUrl = `/manage/questions/${questionId}/answers/${answerId}`;
+            const classroomSlug = this.getAttribute('data-id');
+            const actionUrl = `/classrooms/${classroomSlug}`; 
             deleteForm.action = actionUrl;
             deleteModal.show();
         });
