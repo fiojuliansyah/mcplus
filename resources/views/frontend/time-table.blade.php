@@ -79,7 +79,6 @@
                       <h6 style="display: inline; margin: 0;">#EducationMustWin</h6>
                       <br>
                       <br>
-                      <a href="" class="cs-btn cs-style1">Download</a>
                     </span>
                   </div>
                   <div class="col" style="position: relative; overflow: hidden;">

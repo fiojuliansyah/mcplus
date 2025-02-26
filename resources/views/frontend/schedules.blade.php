@@ -2,11 +2,26 @@
 
 @section('content')
 <div class="cs-height_100 cs-height_lg_70"></div>
-<div class="container">
-  <div class="cs-section_heading cs-style4">
-    <h2 class="cs-section_title">Schedule</h2>
-    <p class="cs-section_subtitle">Find the schedule you are looking for below.</p>
+<!-- Start Page Head -->
+<div class="non-printable" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+  <!-- Icon in Gradient Box - now properly centered -->
+  <div style="position: relative; background: linear-gradient(135deg, #179DCF, #B70092); width: 60px; height: 60px; border-radius: 20%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 15px rgba(183, 0, 146, 0.6); margin-bottom: 15px; z-index: 3;">
+    <div style="position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; z-index: -1; background: linear-gradient(135deg, #179DCF, #B70092); filter: blur(8px); opacity: 0.8; border-radius: 50%;"></div>
+    
+    <!-- Clock/Schedule icon - Filled version -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+    </svg>
   </div>
+  
+  <!-- Updated Content Section -->
+  <div class="cs-section_heading cs-style4">
+    <h2 class="cs-section_title">Course Schedule & Timings</h2>
+    <p class="cs-section_subtitle">Plan your learning journey with our flexible scheduling options designed to accommodate your busy lifestyle and maximize your educational experience.
+    </p>
+  </div>
+</div>
+<div class="container">
 
   <div class="cs-height_60 cs-height_lg_70"></div>
 

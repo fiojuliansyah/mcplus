@@ -8,8 +8,7 @@
             <div class="text-center">
                 <h1 class="cs-page_title">{{ $tutor->name }}</h1>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Tutors</a></li>
-                    <li class="breadcrumb-item active">{{ $tutor->name }}</li>
+                    <li class="breadcrumb-item active">{{ $tutor->category->name }}</li>
                 </ol>
             </div>
         </div>
