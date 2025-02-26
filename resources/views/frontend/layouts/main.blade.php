@@ -17,12 +17,7 @@
 </head>
 
 <body class="cs-dark">
-
-  <div class="cs-preloader cs-center">
-    <div class="cs-preloader_in"></div>
-    <span>Loading</span>
-  </div>
-
+  
   <!-- Start Header Section -->
   @include('frontend.layouts.partials.header')
   <!-- End Header Section -->
